@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Grader Pro — FutureHorizon Humane Ventures</title>
+  <link rel="canonical" href="/" />
+  
+  <link rel="alternate" hreflang="en" href="/en/" />
+  <link rel="alternate" hreflang="zh-Hant" href="/" />
+  <link rel="alternate" hreflang="x-default" href="/en/" />
+<meta name="description" content="AI Grader Pro：本機優先的智慧閱卷、出題與學習分析工具。FutureHorizon Humane Ventures — 科技 × 教育 × 人文關懷。" />
+  <meta name="theme-color" content="#0B1020" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+
+<body>
+  <a class="skip" href="#main">跳到主要內容</a>
+
+  <header class="topbar" id="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <span class="brand__name">FutureHorizon</span>
+          <span class="brand__sub">Humane Ventures</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="主要導覽">
+        <a href="#capabilities"><span data-i18n="nav_cap">能力</span></a>
+        <a href="#workflow"><span data-i18n="nav_wf">流程</span></a>
+        
+        
+        <a href="#download"><span data-i18n="nav_dl">下載</span></a>
+        
+      </nav>
+
+      <div class="topbar__cta">
+        <div class="langswitch" role="group" aria-label="Language"><a class="langlink" href="/en/">EN</a><a class="langlink is-active" href="/">中文</a></div>
+
+        <a class="btn btn--ghost" href="#download"><span data-i18n="btn_download">下載</span></a>
+        <a class="btn btn--primary" href="#contact"><span data-i18n="btn_contact">聯絡</span></a>
+      </div>
+
+      <button class="navbtn" id="navbtn" aria-label="開啟選單" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobileNav" id="mobileNav" hidden>
+      <div class="container mobileNav__inner">
+        
+        <div class="mobileLang"><a class="langlink" href="/en/">EN</a><a class="langlink is-active" href="/">中文</a></div>
+<a href="#capabilities"><span data-i18n="nav_cap">能力</span></a>
+        <a href="#workflow"><span data-i18n="nav_wf">流程</span></a>
+        
+        
+        <a href="#download"><span data-i18n="nav_dl">下載</span></a>
+        
+        <a href="#contact"><span data-i18n="nav_ct">聯絡</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-label="AI Grader Pro 首頁">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="orb orb--a"></div>
+        <div class="orb orb--b"></div>
+        <div class="gridlines"></div>
+      </div>
+
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <div class="pill reveal">
+            <span class="dot"></span>
+            <span>本機優先 • 跨平台 • 教學優先</span>
+          </div>
+
+          <h1 class="hero__title reveal" data-i18n="hero_title">
+            AI Grader Pro
+            <span class="hero__title2" data-i18n="hero_subtitle">Precision Academic 閱卷 System</span>
+          </h1>
+
+          <p class="hero__desc reveal" data-i18n="hero_desc">
+            Local-first 的智慧閱卷與分析工具：步驟化評分、Rubric 拆解、批次 PDF 工作流與報告輸出。支援 macOS / Windows / Linux。
+          </p>
+
+          <div class="hero__actions reveal">
+            <a class="btn btn--primary" href="#download" id="primary下載"><span data-i18n="hero_btn_download">下載 macOS 版</span></a>
+            <a class="btn btn--ghost" href="#workflow"><span data-i18n="hero_btn_workflow">看流程</span></a>
+          </div>
+
+          <div class="kpis reveal" role="list" aria-label="關鍵指標">
+            <div class="kpi" role="listitem">
+              <div class="kpi__num"><span data-i18n="chip1_title">10×</span></div>
+              <div class="kpi__lbl"><span data-i18n="chip1_desc">減少重複工時</span></div>
+            </div>
+            <div class="kpi" role="listitem">
+              <div class="kpi__num"><span data-i18n="chip2_title">可追溯</span></div>
+              <div class="kpi__lbl"><span data-i18n="chip2_desc">步驟化評分</span></div>
+            </div>
+            <div class="kpi" role="listitem">
+              <div class="kpi__num"><span data-i18n="chip3_title">本機優先</span></div>
+              <div class="kpi__lbl"><span data-i18n="chip3_desc">資料最小外傳</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__panel reveal" aria-label="產品預覽卡片">
+          <div class="panel">
+            <div class="panel__top">
+              <div class="chip">AI Grader Pro</div>
+              <div class="chip chip--muted" id="latestBadge">載入最新版本中…</div>
+            </div>
+
+            <div class="panel__body">
+              <div class="ui">
+                <div class="ui__bar">
+                  <span class="ui__dot d1"></span>
+                  <span class="ui__dot d2"></span>
+                  <span class="ui__dot d3"></span>
+                  <span class="ui__title">閱卷 Console</span>
+                </div>
+
+                <div class="ui__content">
+                  <div class="ui__row">
+                    <div class="ui__pill">題目卷 PDF</div>
+                    <div class="ui__pill">作答卷 PDF</div>
+                  </div>
+
+                  <div class="ui__row">
+                    <div class="ui__meter">
+                      <span class="ui__meterFill"></span>
+                    </div>
+                    <div class="ui__meter ui__meter--dim">
+                      <span class="ui__meterFill ui__meterFill--dim"></span>
+                    </div>
+                  </div>
+
+                  <div class="ui__grid">
+                    <div class="ui__tile">
+                      <div class="ui__k">評分規準</div>
+                      <div class="ui__v">精簡／標準／診斷</div>
+                    </div>
+                    <div class="ui__tile">
+                      <div class="ui__k">輸出</div>
+                      <div class="ui__v">PDF 報告＋分析</div>
+                    </div>
+                    <div class="ui__tile">
+                      <div class="ui__k">隱私</div>
+                      <div class="ui__v">本機優先處理</div>
+                    </div>
+                    <div class="ui__tile">
+                      <div class="ui__k">批次</div>
+                      <div class="ui__v">可佇列化工作流程</div>
+                    </div>
+                  </div>
+
+                  <div class="ui__footer">
+                    <div class="ui__btn">開始</div>
+                    <div class="ui__btn ui__btn--ghost">預覽</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel__side">
+                <div class="mini">
+                  <div class="mini__k">最新版本</div>
+                  <div class="mini__v" id="latestVersion">—</div>
+                </div>
+                <div class="mini">
+                  <div class="mini__k">更新日期</div>
+                  <div class="mini__v" id="latestDate">—</div>
+                </div>
+                <div class="mini">
+                  <div class="mini__k">下載來源</div>
+                  <div class="mini__v">GitHub Releases</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel__bottom">
+              <div class="muted"><span data-i18n="dl_auto_latest">按鈕會自動指向最新 Release</span></div>
+              <a class="link" href="#download">下載 →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 核心能力 -->
+    <section id="capabilities" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="cap_title">核心能力</h2>
+          <p class="section__sub">為高等教育的評量流程設計：可控、可解釋、可擴充。</p>
+        </div>
+
+        <div class="grid3">
+          <article class="card">
+            <div class="card__top">
+              <div class="icon">⚡</div>
+              <h3>步驟化評分</h3>
+            </div>
+            <p>依配分拆解核心步驟，產出可追溯的細項分數與評語，提升一致性與回饋品質。</p>
+            <div class="card__meta">
+              <span class="tag">精簡／標準／診斷</span>
+              <span class="tag tag--muted">可解釋</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__top">
+              <div class="icon">🧩</div>
+              <h3>流程化出題</h3>
+            </div>
+            <p>支援題型模板、配分策略、題庫管理；出題與閱卷可平行分工，降低協作成本。</p>
+            <div class="card__meta">
+              <span class="tag">題庫與範本</span>
+              <span class="tag tag--muted">可版本控管</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__top">
+              <div class="icon">📈</div>
+              <h3>教學分析報告</h3>
+            </div>
+            <p>班級 / 題目層級統計，快速定位常見錯誤與教學盲點，支援教學改進與稽核需求。</p>
+            <div class="card__meta">
+              <span class="tag">課堂洞察</span>
+              <span class="tag tag--muted">可匯出</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 工作流程 -->
+    <section id="workflow" class="section section--alt">
+      <div class="container">
+        <div class="wf-figure reveal"><img src="/assets/workflow.svg" alt="Workflow diagram" loading="lazy"></div>
+
+        <div class="section__head">
+          <h2 data-i18n="wf_title">工作流程</h2>
+          <p class="section__sub">出題與閱卷是兩條平行工作：更貼近教學團隊的實際分工。</p>
+        </div>
+
+        <div class="workflow">
+          <div class="lane">
+            <div class="lane__head">
+              <div class="lane__title">出題（出題）</div>
+              <div class="lane__sub">題型 → 配分 → Rubric</div>
+            </div>
+            <div class="steps">
+              <div class="step">
+                <div class="step__k">1</div>
+                <div class="step__v">建立題型模板與題庫策略</div>
+              </div>
+              <div class="step">
+                <div class="step__k">2</div>
+                <div class="step__v">設定配分與評分細緻度</div>
+              </div>
+              <div class="step">
+                <div class="step__k">3</div>
+                <div class="step__v">輸出題目卷 PDF（含版面與欄位）</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lane lane--right">
+            <div class="lane__head">
+              <div class="lane__title">閱卷（閱卷）</div>
+              <div class="lane__sub">輸入 → 評分 → 報告</div>
+            </div>
+            <div class="steps">
+              <div class="step">
+                <div class="step__k">1</div>
+                <div class="step__v">上傳題目卷 PDF 與學生作答 PDF</div>
+              </div>
+              <div class="step">
+                <div class="step__k">2</div>
+                <div class="step__v">自動拆解步驟並產出細項分數</div>
+              </div>
+              <div class="step">
+                <div class="step__k">3</div>
+                <div class="step__v">輸出 PDF 報告與班級分析</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          <div class="note__k">Enterprise 建議</div>
+          <div class="note__v">目前版本以桌面端與校內受控部署為主軸：單機批次處理、可追溯評分、以及可匯出的報告格式，便於與既有系統以「人工流程」或「檔案匯入匯出」方式銜接。</div>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- 下載 -->
+    <section id="download" class="section section--alt">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="dl_title">下載</h2>
+          <p class="section__sub">下載來源為 GitHub Releases。建議同時下載 SHA256 檔案以驗證完整性。</p>
+        </div>
+
+        <div class="download">
+          <div class="download__box">
+            <div class="download__title">macOS（Apple Silicon）</div>
+            <div class="download__meta">
+              <span class="tag" id="latestTag">最新版本：載入中…</span>
+              <span class="tag tag--muted" id="dateTag">更新日期：載入中…</span>
+            </div>
+
+            <div class="download__btns">
+              <a class="btn btn--primary" id="downloadMac" href="#" rel="noopener">下載 DMG</a>
+              <a class="btn btn--ghost" id="downloadSha" href="#" rel="noopener">下載 SHA256</a>
+            </div>
+
+            <details class="details">
+              <summary>如何驗證 SHA256？</summary>
+              <pre class="code">shasum -a 256 AIGraderPro-*.dmg
+# 比對輸出與 .sha256 檔內容一致即可</pre>
+            </details>
+
+            <div class="muted small" style="margin-top:12px">
+              建議使用固定連結：<span class="kbd">releases/latest/download/...</span>，讓網站不必隨版本更新。
+            </div>
+          </div>
+
+          <div class="download__box download__box--dark">
+            <div class="download__title">系統需求（建議）</div>
+            <ul class="list">
+              <li>macOS 12+（建議 13/14/15）</li>
+              <li>記憶體 8GB+（大量 PDF 建議 16GB+）</li>
+              <li>儲存空間 1GB+</li>
+              <li>若啟用外部模型：依設定需要 API key</li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <div class="download__title">固定 latest 連結（推薦）</div>
+            <pre class="code" id="latestUrlCode">載入中…</pre>
+            <div class="download__title" style="margin-top:10px">指定版本（公告用）</div>
+            <pre class="code" id="versionUrlCode">載入中…</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聯絡 -->
+    
+    <!-- PRICING -->
+    <section id="pricing" class="section section--alt">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="pr_title">授權與定價</h2>
+          <p class="section__sub" data-i18n="pr_sub">簡潔透明：學術年度授權，適合個人教師與教學團隊。</p>
+        </div>
+
+        <div class="grid2">
+          <article class="card">
+            <h3 data-i18n="pr_std_title">個人（年度）</h3>
+            <p class="price"><span class="price__num" data-price="personal">$149</span><span class="price__unit" data-i18n="pr_per_year">／年</span></p>
+            <ul class="list">
+              <li data-i18n="pr_item1">步驟化評分＋評分規準引擎</li>
+              <li data-i18n="pr_item2">批次 PDF 流程＋可匯出報告</li>
+              <li data-i18n="pr_item3">支援 macOS / Windows / Linux</li>
+            </ul>
+            <div class="row">
+              <a class="btn btn--primary" href="#download" data-i18n="pr_btn_try">下載</a>
+              <a class="btn btn--ghost" href="#contact" data-i18n="pr_btn_contact">聯絡</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 data-i18n="pr_bus_title">團隊（年度）</h3>
+            <p class="price"><span class="price__num" data-price="business">$299</span><span class="price__unit" data-i18n="pr_per_year">／年</span></p>
+            <p class="muted" data-i18n="pr_bus_note">適合教學團隊與系所：提供更完整的支援與授權管理。</p>
+            <div class="row">
+              <a class="btn btn--primary" href="#contact" data-i18n="pr_btn_get_quote">索取報價</a>
+              <a class="btn btn--ghost" href="#download" data-i18n="pr_btn_try">下載</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+<section id="contact" class="section section--alt">
+      <div class="container">
+        <div class="cta">
+          <div class="cta__copy">
+            <h2 data-i18n="ct_title">聯絡</h2>
+            <p class="section__sub">留下需求，我們會回覆你。Netlify Forms 可直接收件（無需後端）。</p>
+
+            <div class="cta__meta">
+              <span class="tag">FutureHorizon Humane Ventures</span>
+              <span class="tag tag--muted">教育 × AI × 人文</span>
+            </div>
+
+            <div class="muted small" style="margin-top:12px">
+              你也可以把這段放到校園提案：<br/>
+              <span class="kbd">本機優先 • 可解釋 • 可擴充</span>
+            </div>
+          </div>
+
+          <form class="form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden">
+              <label>不要填這欄：<input name="bot-field" /></label>
+            </p>
+
+            <label>
+              <span>姓名 / 單位</span>
+              <input name="name" placeholder="例如：C. T. Shieh / TKU" required />
+            </label>
+
+            <label>
+              <span>電子郵件</span>
+              <input type="email" name="email" placeholder="name@school.edu" required />
+            </label>
+
+            <label>
+              <span>需求</span>
+              <textarea name="message" rows="4" placeholder="例如：需要教學團隊部署、授權方案、功能客製…" required></textarea>
+            </label>
+
+            <button class="btn btn--primary" type="submit">送出</button>
+            <p class="muted small">此表單由 Netlify Forms 接收（無需後端）。</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__left">
+          <div class="brand brand--footer">
+            <span class="brand__mark" aria-hidden="true"></span>
+            <span class="brand__text">
+              <span class="brand__name">FutureHorizon</span>
+              <span class="brand__sub">Humane Ventures</span>
+            </span>
+          </div>
+          <p class="muted small">© <span id="year"></span> FutureHorizon Humane Ventures. All rights reserved.</p>
+        </div>
+        <div class="footer__right">
+          <a href="#download"><span data-i18n="nav_dl">下載</span></a>
+          
+          
+          
+          <a href="#contact"><span data-i18n="nav_ct">聯絡</span></a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // ========= CONFIG =========
+    const OWNER = "ctshieh";
+    const REPO  = "AIGraderPro-下載s";
+    const DMG_MATCH = /mac-arm64\.dmg$/i;
+    const SHA_MATCH = /mac-arm64\.dmg\.sha256$/i;
+
+    const $ = (id) => document.getElementById(id);
+    const setText = (id, txt) => { const el = $(id); if (el) el.textContent = txt; };
+
+    // Mobile nav
+    const navbtn = $("navbtn");
+    const mobileNav = $("mobileNav");
+    if (navbtn && mobileNav) {
+      navbtn.addEventListener("click", () => {
+        const expanded = navbtn.getAttribute("aria-expanded") === "true";
+        navbtn.setAttribute("aria-expanded", String(!expanded));
+        mobileNav.hidden = expanded;
+      });
+      mobileNav.addEventListener("click", (e) => {
+        if (e.target && e.target.tag姓名 === "A") {
+          navbtn.setAttribute("aria-expanded", "false");
+          mobileNav.hidden = true;
+        }
+      });
+    }
+
+    // Year
+    setText("year", new Date().getFullYear());
+
+    // Reveal on scroll
+    (() => {
+      const els = document.querySelectorAll(".reveal");
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("is-in");
+        });
+      }, { threshold: 0.15 });
+      els.forEach(el => io.observe(el));
+    })();
+
+    async function loadLatest() {
+      const api = `https://api.github.com/repos/${OWNER}/${REPO}/releases/latest`;
+      try {
+        const res = await fetch(api, { headers: { "Accept": "application/vnd.github+json" }});
+        if (!res.ok) throw new Error("GitHub API error: " + res.status);
+        const data = await res.json();
+
+        const tag = data.tag_name || "latest";
+        const date = (data.published_at || "").slice(0,10);
+        const assets = Array.isArray(data.assets) ? data.assets : [];
+
+        const dmg = assets.find(a => DMG_MATCH.test(a.name)) || assets.find(a => a.name && a.name.toLowerCase().endsWith(".dmg"));
+        const sha = assets.find(a => SHA_MATCH.test(a.name)) || assets.find(a => a.name && a.name.toLowerCase().endsWith(".sha256"));
+
+        const latest下載Base = `https://github.com/${OWNER}/${REPO}/releases/latest/download/`;
+        const version下載Base = `https://github.com/${OWNER}/${REPO}/releases/download/${encodeURIComponent(tag)}/`;
+
+        if (dmg) {
+          $("downloadMac").href = dmg.browser_download_url;
+          setText("latestBadge", `最新：${tag}`);
+          setText("latestVersion", tag);
+          setText("latestDate", date || "—");
+          setText("latestTag", `最新版本：${tag}`);
+          setText("dateTag", date ? `更新日期：${date}` : "更新日期：—");
+          setText("latestUrlCode", latest下載Base + dmg.name);
+          setText("versionUrlCode", version下載Base + dmg.name);
+        } else {
+          setText("latestBadge", "尚未找到 DMG");
+          setText("latestTag", "最新版本：—");
+          setText("dateTag", "更新日期：—");
+          setText("latestUrlCode", latest下載Base + "<DMG檔名>");
+          setText("versionUrlCode", version下載Base + "<DMG檔名>");
+        }
+
+        if (sha) $("downloadSha").href = sha.browser_download_url;
+
+      } catch (err) {
+        console.error(err);
+        setText("latestBadge", "無法讀取最新版本");
+        setText("latestTag", "最新版本：—");
+        setText("dateTag", "更新日期：—");
+        setText("latestUrlCode", `https://github.com/${OWNER}/${REPO}/releases/latest/download/<DMG檔名>`);
+        setText("versionUrlCode", `https://github.com/${OWNER}/${REPO}/releases/download/vX.Y.Z/<DMG檔名>`);
+      }
+    }
+
+    loadLatest();
+  </script>
+  <script src="/assets/pricing.js"></script>
+</body>
+</html>

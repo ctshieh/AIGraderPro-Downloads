@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect x="24" y="24" width="1152" height="472" rx="24" fill="url(#g)" stroke="#ffffff" stroke-opacity="0.12"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system" fill="#e9eefc">
+    <text id="wfSvgTitle" x="60" y="84" font-size="22" font-weight="700">Workflow Overview</text>
+
+    <!-- Top lane: Design -->
+    <text id="wfLane1" x="60" y="140" font-size="16" opacity="0.9">Design</text>
+    <rect x="60" y="160" width="270" height="74" rx="16" fill="#0b1020" fill-opacity="0.55" stroke="#ffffff" stroke-opacity="0.10"/>
+    <text id="wfBox1" x="84" y="204" font-size="16" font-weight="600">Template / Question Bank</text>
+
+    <path d="M340 197 H420" stroke="#8aa7ff" stroke-width="3" stroke-opacity="0.6" filter="url(#glow)"/>
+    <circle cx="420" cy="197" r="6" fill="#8aa7ff" fill-opacity="0.8"/>
+
+    <rect x="440" y="160" width="230" height="74" rx="16" fill="#0b1020" fill-opacity="0.55" stroke="#ffffff" stroke-opacity="0.10"/>
+    <text id="wfBox2" x="464" y="194" font-size="16" font-weight="600">Rubric Setup</text>
+    <text id="wfBox2b" x="464" y="216" font-size="13" opacity="0.85">points • criteria • modes</text>
+
+    <path d="M680 197 H760" stroke="#8aa7ff" stroke-width="3" stroke-opacity="0.6" filter="url(#glow)"/>
+    <circle cx="760" cy="197" r="6" fill="#8aa7ff" fill-opacity="0.8"/>
+
+    <rect x="780" y="160" width="260" height="74" rx="16" fill="#0b1020" fill-opacity="0.55" stroke="#ffffff" stroke-opacity="0.10"/>
+    <text id="wfBox3" x="804" y="204" font-size="16" font-weight="600">Exam PDF Output</text>
+
+    <!-- Bottom lane: Grading -->
+    <text id="wfLane2" x="60" y="284" font-size="16" opacity="0.9">Grading</text>
+
+    <rect x="60" y="304" width="300" height="84" rx="18" fill="#0b1020" fill-opacity="0.55" stroke="#ffffff" stroke-opacity="0.10"/>
+    <text id="wfBox4" x="84" y="344" font-size="16" font-weight="600">Question PDF + Answers</text>
+    <text id="wfBox4b" x="84" y="368" font-size="13" opacity="0.85">batch import</text>
+
+    <path d="M368 346 H470" stroke="#67e8f9" stroke-width="3" stroke-opacity="0.55" filter="url(#glow)"/>
+    <circle cx="470" cy="346" r="6" fill="#67e8f9" fill-opacity="0.75"/>
+
+    <rect x="490" y="304" width="290" height="84" rx="18" fill="#0b1020" fill-opacity="0.55" stroke="#ffffff" stroke-opacity="0.10"/>
+    <text id="wfBox5" x="514" y="344" font-size="16" font-weight="600">Step-wise Scoring</text>
+    <text id="wfBox5b" x="514" y="368" font-size="13" opacity="0.85">explainable • traceable</text>
+
+    <path d="M786 346 H888" stroke="#67e8f9" stroke-width="3" stroke-opacity="0.55" filter="url(#glow)"/>
+    <circle cx="888" cy="346" r="6" fill="#67e8f9" fill-opacity="0.75"/>
+
+    <rect x="908" y="304" width="268" height="84" rx="18" fill="#0b1020" fill-opacity="0.55" stroke="#ffffff" stroke-opacity="0.10"/>
+    <text id="wfBox6" x="932" y="344" font-size="16" font-weight="600">Report + Analytics</text>
+    <text id="wfBox6b" x="932" y="368" font-size="13" opacity="0.85">PDF export</text>
+  </g>
+</svg>
