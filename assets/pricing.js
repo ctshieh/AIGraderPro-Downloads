@@ -4,7 +4,8 @@
   async function loadPricing() {
     if (cache) return cache;
     try {
-      const resp = await fetch("/assets/pricing.json", { cache: "no-store" });
+            const url = window.__PRICING_JSON_URL || "assets/pricing.json";
+      const resp = await fetch(url, { cache: "no-store" });
       cache = await resp.json();
       return cache;
     } catch (e) {
