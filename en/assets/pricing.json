@@ -1,11 +1,11 @@
 {
   "currency_symbol": {
-    "zh": "US$",
+    "zh": "USＤ$",
     "en": "$"
   },
   "plans": {
     "personal": {
-      "amount": 149
+      "amount": 100
     },
     "business": {
       "amount": 299
