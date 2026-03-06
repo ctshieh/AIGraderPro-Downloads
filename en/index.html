@@ -340,7 +340,9 @@
           <a class="btn btn--ghost" id="downloadSha" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro_mac_arm64.dmg.sha256" rel="noopener">Download SHA256</a>
         </div>
 
-        
+        <div class="muted small" style="margin-top:12px">
+          These links use fixed alias filenames with <span class="kbd">releases/latest/download/...</span>, so you do not need to update version numbers on the website.
+        </div>
 
         <details class="details" style="margin-top:12px">
           <summary>How to verify SHA256?</summary>
@@ -425,57 +427,35 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
             </div>
           </div>
 
-          <form class="form" id="contactForm">
-  <label>
-    <span>姓名 / 單位</span>
-    <input id="cf_name" name="name" placeholder="例如：Eric Herman / AI University" required />
-  </label>
+          <form class="form"
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                action="/thank-you/">
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden">
+              <label>Do not fill this field:<input name="bot-field" /></label>
+            </p>
 
-  <label>
-    <span>電子郵件</span>
-    <input id="cf_email" type="email" name="email" placeholder="name@school.edu" required />
-  </label>
+            <label>
+              <span>Name / Affiliation</span>
+              <input name="name" placeholder="e.g.,  Eric Herman / Ai University" required />
+            </label>
 
-  <label>
-    <span>需求</span>
-    <textarea id="cf_message" name="message" rows="4" placeholder="例如：需要教學團隊部署、授權方案、功能客製…" required></textarea>
-  </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" placeholder="name@school.edu" required />
+            </label>
 
-  <button class="btn btn--primary" type="button" id="cf_send">送出</button>
-  <p class="muted small" id="cf_hint"></p>
-</form>
+            <label>
+              <span>Message</span>
+              <textarea name="message" rows="4" placeholder="e.g., team deployment, licensing, customization…" required></textarea>
+            </label>
 
-<script>
-(function () {
-  const btn  = document.getElementById("cf_send");
-  const hint = document.getElementById("cf_hint");
-  if (!btn) return;
-
-  btn.addEventListener("click", () => {
-    const name = (document.getElementById("cf_name")?.value || "").trim();
-    const email = (document.getElementById("cf_email")?.value || "").trim();
-    const message = (document.getElementById("cf_message")?.value || "").trim();
-
-    if (!name || !email || !message) {
-      if (hint) hint.textContent = "請先完整填寫所有欄位。";
-      return;
-    }
-
-    // 你要收信的客服信箱（你頁面上目前寫的是 fh.humane@gmail.com）
-    const to = "fh.humane@gmail.com";
-
-    const subject = encodeURIComponent("AI Grader Pro 詢問 / Inquiry");
-    const body = encodeURIComponent(
-      `姓名 / 單位：${name}\n` +
-      `Email：${email}\n\n` +
-      `需求：\n${message}\n`
-    );
-
-    // 開啟使用者的郵件程式
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-  });
-})();
-</script>
+            <button class="btn btn--primary" type="submit">Send</button>
+            <p class="muted small"></p>
+          </form>
         </div>
       </div>
     </section>
@@ -500,9 +480,9 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
           <a href="#contact"><span data-i18n="nav_ct">Contact</span></a>
         
           <span class="muted small" style="opacity:.6">|</span>
-          <a href="/AIGraderPro-Downloads/terms/"><span>Terms</span></a>
-          <a href="/AIGraderPro-Downloads/privacy/"><span>Privacy</span></a>
-          <a href="/AIGraderPro-Downloads/refund-policy/"><span>Refunds</span></a>
+          <a href="/terms/"><span>Terms</span></a>
+          <a href="/privacy/"><span>Privacy</span></a>
+          <a href="/refund-policy/"><span>Refunds</span></a>
 </div>
       </div>
 </footer>
