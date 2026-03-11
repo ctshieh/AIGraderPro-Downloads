@@ -336,8 +336,8 @@
 
         <div class="download__btns">
           <a class="btn btn--primary" id="downloadMac" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro_mac_arm64.dmg" rel="noopener">Download macOS DMG</a>
-          <a class="btn btn--ghost" id="downloadWin" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-Windows-x64.exe
-" rel="noopener">Download Windows Installer</a>
+          <a class="btn btn--ghost" id="downloadWin" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-Windows-x64.exe"
+ rel="noopener">Download Windows Installer</a>
           <a class="btn btn--ghost" id="downloadSha" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro_mac_arm64.dmg.sha256" rel="noopener">Download SHA256</a>
         </div>
 
@@ -393,7 +393,7 @@ Get-FileHash .\AIGraderPro-Windows-x64.exe -Algorithm SHA256
               <li>Email support</li>
             </ul>
             <div class="row">
-                <a class="btn btn--primary" href="#" onclick="buyPersonal(); return false;">Buy Personal License</a>
+                <button type="button" class="btn btn--primary" onclick="buyPersonal()">購買個人授權</button>
               <a class="btn btn--ghost" href="#download">Download Free Trial</a>
             </div>
           </article>
@@ -411,7 +411,7 @@ Get-FileHash .\AIGraderPro-Windows-x64.exe -Algorithm SHA256
               <li>Priority support</li>
             </ul>
             <div class="row">
-                <a class="btn btn--primary" href="#" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'}); return false;">Join Waitlist / Contact Sales</a>
+                <button type="button" class="btn btn--primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">加入候補 / 聯絡銷售</button>
               <a class="btn btn--ghost" href="#download">Download Free Trial</a>
             </div>
           </article>
@@ -424,7 +424,7 @@ Get-FileHash .\AIGraderPro-Windows-x64.exe -Algorithm SHA256
           <div class="cta__copy">
             <h2 data-i18n="ct_title">Contact</h2>
             <p class="section__sub">Contact us for licensing, quotes, campus deployment, or trial inquiries.
-            <br>Contact us for licensing, quotes, campus deployment, or trial inquiries. </p></br>
+            <br>Contact us for licensing, quotes, campus deployment, or trial inquiries. </p><br>
             Customer Support（客服）:<a href="mailto:fh.humane@gmail.com"> fh.humane@gmail.com</a>
 
             <div class="cta__meta">
@@ -625,20 +625,26 @@ Get-FileHash .\AIGraderPro-Windows-x64.exe -Algorithm SHA256
 <script src="./assets/pricing.js"></script>
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script>
-  Paddle.Environment.set("live");
   Paddle.Initialize({
-    token: "在這裡放你的完整 live client-side token"
+    token: "你的新的 live client-side token"
   });
 
   function buyPersonal() {
-    Paddle.Checkout.open({
-      items: [
-        {
-          priceId: "在這裡放你的完整 Personal priceId",
-          quantity: 1
-        }
-      ]
-    });
+    try {
+      console.log("buyPersonal triggered");
+
+      Paddle.Checkout.open({
+        items: [
+          {
+            priceId: "pri_01kkd4szhavp8h1h7216947wnd",
+            quantity: 1
+          }
+        ]
+      });
+    } catch (err) {
+      console.error("Paddle checkout error:", err);
+      alert("Paddle checkout can not open， please check messages on Console.");
+    }
   }
 </script>
 </body>
