@@ -334,18 +334,19 @@
         </div>
 
         <div class="download__btns">
-          <a class="btn btn--primary" id="downloadMac" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro_mac_arm64.dmg" rel="noopener">下載 macOS DMG</a>
-          <a class="btn btn--ghost" id="downloadWin" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro_Windows_x64.zip" rel="noopener">下載 Windows ZIP</a>
+          <a class="btn btn--primary" id="downloadMac" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-mac-arm64.dmg" rel="noopener">下載 macOS DMG</a>
+          <a class="btn btn--ghost" id="downloadWin" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-Windows-x64.exe
+" rel="noopener">下載 Windows 安裝檔</a>
 </div>
 
        
         <details class="details" style="margin-top:12px">
           <summary>如何驗證 SHA256？</summary>
           <pre class="code"># macOS / Linux
-shasum -a 256 AIGraderPro_mac_arm64.dmg
+shasum -a 256 AIGraderPro-mac-arm64.dmg
 
 # Windows (PowerShell)
-Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
+Get-FileHash .\AIGraderPro-Windows-x64.exe -Algorithm SHA256
 
 # 比對輸出與 .sha256 檔內容一致即可</pre>
         </details>
@@ -371,32 +372,44 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
     <section id="pricing" class="section section--alt">
       <div class="container">
         <div class="section__head">
-          <h2 data-i18n="pr_title">授權與定價</h2>
-          提供14天試用。可依需要購買不同版本。
+          <h2>授權與定價</h2>
+          <p class="section__sub">先下載 14 天試用版；個人版可直接購買，團隊版預計於 2026 Q2 開放。</p>
         </div>
 
         <div class="grid2">
           <article class="card">
-            <h3 data-i18n="pr_std_title">個人（年度）</h3>
-            <p class="price"><span class="price__num" data-price="personal">USD  $120</span><span class="price__unit" data-i18n="pr_per_year">／年</span></p>
+            <h3>個人版（年度）</h3>
+            <p class="price">
+              <span class="price__num" data-price="personal">US $120</span>
+              <span class="price__unit">／年</span>
+            </p>
             <ul class="list">
-              <li data-i18n="pr_item1">步驟化評分＋評分規準引擎</li>
-              <li data-i18n="pr_item2">批次 PDF 流程＋可匯出報告</li>
-              <li data-i18n="pr_item3">支援 macOS / Windows / Linux</li>
+              <li>1 位使用者</li>
+              <li>支援 macOS / Windows</li>
+              <li>14 天試用</li>
+              <li>Email 支援</li>
             </ul>
             <div class="row">
-              <a class="btn btn--primary" href="#download" data-i18n="pr_btn_try">下載</a>
-              <a class="btn btn--ghost" href="#contact" data-i18n="pr_btn_contact">聯絡</a>
+              <a class="btn btn--primary" href="#contact">購買個人授權</a>
+              <a class="btn btn--ghost" href="#download">下載試用版</a>
             </div>
           </article>
 
           <article class="card">
-            <h3 data-i18n="pr_bus_title">團隊（年度）</h3>
-            <p class="price"><span class="price__num" data-price="business">US $299</span><span class="price__unit" data-i18n="pr_per_year">／年</span></p>
-            <p class="muted" data-i18n="pr_bus_note">適合教學團隊與系所：提供更完整的功能、支援與授權管理。 預計 2026 Q2 公開發行</p>
+            <h3>團隊版（年度）</h3>
+            <p class="price">
+              <span class="price__num" data-price="business">US $299</span>
+              <span class="price__unit">／年</span>
+            </p>
+            <p class="muted"><strong>預計 2026 Q2 開放。</strong></p>
+            <ul class="list">
+              <li>適合教學團隊與系所</li>
+              <li>多使用者部署</li>
+              <li>優先支援</li>
+            </ul>
             <div class="row">
-              <a class="btn btn--primary" href="#contact" data-i18n="pr_btn_get_quote">索取報價</a>
-              <a class="btn btn--ghost" href="#download" data-i18n="pr_btn_try">下載</a>
+              <a class="btn btn--primary" href="#contact">加入候補 / 聯絡銷售</a>
+              <a class="btn btn--ghost" href="#download">先下載試用版</a>
             </div>
           </article>
         </div>
@@ -510,7 +523,7 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
     const REPO  = "AIGraderPro-Downloads";
     const DMG_MATCH = /mac-arm64\.dmg$/i;
     const SHA_MATCH = /mac-arm64\.dmg\.sha256$/i;
-    const WIN_MATCH = /^AIGraderPro_Windows\.zip$/i;
+    const WIN_MATCH = /^AIGraderPro-Windows-x64\.exe$/i;
 
     const $ = (id) => document.getElementById(id);
     const setText = (id, txt) => { const el = $(id); if (el) el.textContent = txt; };
@@ -559,11 +572,11 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
 
         const dmg = assets.find(a => DMG_MATCH.test(a.name)) || assets.find(a => a.name && a.name.toLowerCase().endsWith(".dmg"));
         const sha = assets.find(a => SHA_MATCH.test(a.name)) || assets.find(a => a.name && a.name.toLowerCase().endsWith(".sha256"));
-        const win = assets.find(a => WIN_MATCH.test(a.name)) || assets.find(a => a.name && /windows.*\.zip$/i.test(a.name));
+        const win = assets.find(a => WIN_MATCH.test(a.name)) || assets.find(a => a.name && /windows.*\.exe$/i.test(a.name));
 
         const latest下載Base = `https://github.com/${OWNER}/${REPO}/releases/latest/download/`;
         const version下載Base = `https://github.com/${OWNER}/${REPO}/releases/download/${encodeURIComponent(tag)}/`;
-        const winLatestUrl = latest下載Base + "AIGraderPro_Windows.zip";
+        const winLatestUrl = latest下載Base + "AIGraderPro-Windows-x64.exe";
 
         if (dmg) {
           $("downloadMac").href = dmg.browser_download_url;
@@ -574,16 +587,16 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
           setText("dateTag", date ? `更新日期：${date}` : "更新日期：—");
           setText("latestUrlCode", latest下載Base + dmg.name);
           setText("versionUrlCode", version下載Base + dmg.name);
-          setText("latestUrlCodeWin", latest下載Base + "AIGraderPro_Windows.zip");
-          setText("versionUrlCodeWin", version下載Base + "AIGraderPro_Windows.zip");
+          setText("latestUrlCodeWin", latest下載Base + "AIGraderPro-Windows-x64.exe");
+          setText("versionUrlCodeWin", version下載Base + "AIGraderPro-Windows-x64.exe");
         } else {
           setText("latestBadge", "尚未找到 DMG");
           setText("latestTag", "最新版本：—");
           setText("dateTag", "更新日期：—");
           setText("latestUrlCode", latest下載Base + "<DMG檔名>");
           setText("versionUrlCode", version下載Base + "<DMG檔名>");
-          setText("latestUrlCodeWin", latest下載Base + "AIGraderPro_Windows.zip");
-          setText("versionUrlCodeWin", version下載Base + "AIGraderPro_Windows.zip");
+          setText("latestUrlCodeWin", latest下載Base + "AIGraderPro-Windows-x64.exe");
+          setText("versionUrlCodeWin", version下載Base + "AIGraderPro-Windows-x64.exe");
         }
 
         if (sha) $("downloadSha").href = sha.browser_download_url;
@@ -596,9 +609,9 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
         setText("dateTag", "更新日期：—");
         setText("latestUrlCode", `https://github.com/${OWNER}/${REPO}/releases/latest/download/<DMG檔名>`);
         setText("versionUrlCode", `https://github.com/${OWNER}/${REPO}/releases/download/vX.Y.Z/<DMG檔名>`);
-        setText("latestUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro_Windows.zip`);
-        setText("versionUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/download/vX.Y.Z/AIGraderPro_Windows.zip`);
-        if ($("downloadWin")) $("downloadWin").href = `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro_Windows.zip`;
+        setText("latestUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro-Windows-x64.exe`);
+        setText("versionUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/download/vX.Y.Z/AIGraderPro-Windows-x64.exe`);
+        if ($("downloadWin")) $("downloadWin").href = `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro-Windows-x64.exe`;
       }
     }
 

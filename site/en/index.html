@@ -336,7 +336,8 @@
 
         <div class="download__btns">
           <a class="btn btn--primary" id="downloadMac" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro_mac_arm64.dmg" rel="noopener">Download macOS DMG</a>
-          <a class="btn btn--ghost" id="downloadWin" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro_Windows_x64.zip" rel="noopener">Download Windows ZIP</a>
+          <a class="btn btn--ghost" id="downloadWin" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-Windows-x64.exe
+" rel="noopener">Download Windows Installer</a>
           <a class="btn btn--ghost" id="downloadSha" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro_mac_arm64.dmg.sha256" rel="noopener">Download SHA256</a>
         </div>
 
@@ -348,7 +349,7 @@
 shasum -a 256 AIGraderPro_mac_arm64.dmg
 
 # Windows (PowerShell)
-Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
+Get-FileHash .\AIGraderPro-Windows-x64.exe -Algorithm SHA256
 
 # Compare the output with the content of the .sha256 file</pre>
         </details>
@@ -374,32 +375,44 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
     <section id="pricing" class="section section--alt">
       <div class="container">
         <div class="section__head">
-          <h2 data-i18n="pr_title">Licensing & Pricing</h2>
-          <p class="section__sub" data-i18n="pr_sub">Built for a product intro + sales page: local-first privacy posture, explainable grading, cross-platform deployment, and 11 UI languages for international teams.</p>
+          <h2>Licensing & Pricing</h2>
+          <p class="section__sub">Start with a 14-day free trial. Personal is available now. Team licensing is planned for Q2 2026.</p>
         </div>
 
         <div class="grid2">
           <article class="card">
-            <h3 data-i18n="pr_std_title">Academic Annual</h3>
-            <p class="price"><span class="price__num" data-price="personal">USD $120</span><span class="price__unit" data-i18n="pr_per_year">/ year</span></p>
+            <h3>Personal (Annual)</h3>
+            <p class="price">
+              <span class="price__num" data-price="personal">$120</span>
+              <span class="price__unit">/ year</span>
+            </p>
             <ul class="list">
-              <li data-i18n="pr_item1">Step-wise grading + rubric engine</li>
-              <li data-i18n="pr_item2">Batch PDF workflow + exportable reports</li>
-              <li data-i18n="pr_item3">macOS / Windows </li>
+              <li>1 user</li>
+              <li>macOS / Windows</li>
+              <li>14-day trial</li>
+              <li>Email support</li>
             </ul>
             <div class="row">
-              <a class="btn btn--primary" href="#download" data-i18n="pr_btn_try">Download</a>
-              <a class="btn btn--ghost" href="#contact" data-i18n="pr_btn_contact">Contact</a>
+              <a class="btn btn--primary" href="#contact">Buy Personal License</a>
+              <a class="btn btn--ghost" href="#download">Download Free Trial</a>
             </div>
           </article>
 
           <article class="card">
-            <h3 data-i18n="pr_bus_title">Business (Annual)</h3>
-            <p class="price"><span class="price__num" data-price="business">USD $299</span><span class="price__unit" data-i18n="pr_per_year">/ year</span></p>
-            <p class="muted" data-i18n="pr_bus_note">For teaching teams and departments: additional functions,  support and license management. To be released in 2026 Q2. </p>
+            <h3>Team (Annual)</h3>
+            <p class="price">
+              <span class="price__num" data-price="business">$299</span>
+              <span class="price__unit">/ year</span>
+            </p>
+            <p class="muted"><strong>Available in Q2 2026.</strong></p>
+            <ul class="list">
+              <li>For departments and teaching teams</li>
+              <li>Multi-user deployment</li>
+              <li>Priority support</li>
+            </ul>
             <div class="row">
-              <a class="btn btn--primary" href="#contact" data-i18n="pr_btn_get_quote">Get a quote</a>
-              <a class="btn btn--ghost" href="#download" data-i18n="pr_btn_try">Download</a>
+              <a class="btn btn--primary" href="#contact">Join Waitlist / Contact Sales</a>
+              <a class="btn btn--ghost" href="#download">Download Free Trial</a>
             </div>
           </article>
         </div>
@@ -427,21 +440,21 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
 
           <form class="form" id="contactForm">
   <label>
-    <span>姓名 / 單位</span>
-    <input id="cf_name" name="name" placeholder="例如：Eric Herman / AI University" required />
+    <span>Name / Affiliation</span>
+    <input id="cf_name" name="name" placeholder="e.g.,  Eric Herman / Ai University" required />
   </label>
 
   <label>
-    <span>電子郵件</span>
+    <span>Email</span>
     <input id="cf_email" type="email" name="email" placeholder="name@school.edu" required />
   </label>
 
   <label>
-    <span>需求</span>
-    <textarea id="cf_message" name="message" rows="4" placeholder="例如：需要教學團隊部署、授權方案、功能客製…" required></textarea>
+    <span>Message</span>
+    <textarea id="cf_message" name="message" rows="4" placeholder="e.g., team deployment, licensing, customization…" required></textarea>
   </label>
 
-  <button class="btn btn--primary" type="button" id="cf_send">送出</button>
+  <button class="btn btn--primary" type="button" id="cf_send">Send</button>
   <p class="muted small" id="cf_hint"></p>
 </form>
 
@@ -514,7 +527,7 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
     const REPO  = "AIGraderPro-Downloads";
     const DMG_MATCH = /mac-arm64\.dmg$/i;
     const SHA_MATCH = /mac-arm64\.dmg\.sha256$/i;
-    const WIN_MATCH = /^AIGraderPro_Windows\.zip$/i;
+    const WIN_MATCH = /^AIGraderPro-Windows-x64\.exe$/i;
 
     const $ = (id) => document.getElementById(id);
     const setText = (id, txt) => { const el = $(id); if (el) el.textContent = txt; };
@@ -563,11 +576,11 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
 
         const dmg = assets.find(a => DMG_MATCH.test(a.name)) || assets.find(a => a.name && a.name.toLowerCase().endsWith(".dmg"));
         const sha = assets.find(a => SHA_MATCH.test(a.name)) || assets.find(a => a.name && a.name.toLowerCase().endsWith(".sha256"));
-        const win = assets.find(a => WIN_MATCH.test(a.name)) || assets.find(a => a.name && /windows.*\.zip$/i.test(a.name));
+        const win = assets.find(a => WIN_MATCH.test(a.name)) || assets.find(a => a.name && /windows.*\.exe$/i.test(a.name));
 
         const latestDownloadBase = `https://github.com/${OWNER}/${REPO}/releases/latest/download/`;
         const versionDownloadBase = `https://github.com/${OWNER}/${REPO}/releases/download/${encodeURIComponent(tag)}/`;
-        const winLatestUrl = latestDownloadBase + "AIGraderPro_Windows.zip";
+        const winLatestUrl = latestDownloadBase + "AIGraderPro-Windows-x64.exe";
 
         if (dmg) {
           $("downloadMac").href = dmg.browser_download_url;
@@ -578,16 +591,16 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
           setText("dateTag", date ? `Release date：${date}` : "Release date：—");
           setText("latestUrlCode", latestDownloadBase + dmg.name);
           setText("versionUrlCode", versionDownloadBase + dmg.name);
-          setText("latestUrlCodeWin", latestDownloadBase + "AIGraderPro_Windows.zip");
-          setText("versionUrlCodeWin", versionDownloadBase + "AIGraderPro_Windows.zip");
+          setText("latestUrlCodeWin", latestDownloadBase + "AIGraderPro-Windows-x64.exe");
+          setText("versionUrlCodeWin", versionDownloadBase + "AIGraderPro-Windows-x64.exe");
         } else {
           setText("latestBadge", "No DMG found");
           setText("latestTag", "Latest version：—");
           setText("dateTag", "Release date：—");
           setText("latestUrlCode", latestDownloadBase + "<DMG filename>");
           setText("versionUrlCode", versionDownloadBase + "<DMG filename>");
-          setText("latestUrlCodeWin", latestDownloadBase + "AIGraderPro_Windows.zip");
-          setText("versionUrlCodeWin", versionDownloadBase + "AIGraderPro_Windows.zip");
+          setText("latestUrlCodeWin", latestDownloadBase + "AIGraderPro-Windows-x64.exe");
+          setText("versionUrlCodeWin", versionDownloadBase + "AIGraderPro-Windows-x64.exe");
         }
 
         if (sha) $("downloadSha").href = sha.browser_download_url;
@@ -600,9 +613,9 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
         setText("dateTag", "Release date：—");
         setText("latestUrlCode", `https://github.com/${OWNER}/${REPO}/releases/latest/download/<DMG filename>`);
         setText("versionUrlCode", `https://github.com/${OWNER}/${REPO}/releases/download/vX.Y.Z/<DMG filename>`);
-        setText("latestUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro_Windows.zip`);
-        setText("versionUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/download/vX.Y.Z/AIGraderPro_Windows.zip`);
-        if ($("downloadWin")) $("downloadWin").href = `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro_Windows.zip`;
+        setText("latestUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro-Windows-x64.exe`);
+        setText("versionUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/download/vX.Y.Z/AIGraderPro-Windows-x64.exe`);
+        if ($("downloadWin")) $("downloadWin").href = `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro-Windows-x64.exe`;
       }
     }
 

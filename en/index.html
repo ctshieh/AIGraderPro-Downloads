@@ -335,9 +335,9 @@
         </div>
 
         <div class="download__btns">
-          <a class="btn btn--primary" id="downloadMac" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro_mac_arm64.dmg" rel="noopener">Download macOS DMG</a>
-          <a class="btn btn--ghost" id="downloadWin" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro_Windows_x64.zip" rel="noopener">Download Windows ZIP</a>
-          <a class="btn btn--ghost" id="downloadSha" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro_mac_arm64.dmg.sha256" rel="noopener">Download SHA256</a>
+          <a class="btn btn--primary" id="downloadMac" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-mac-arm64.dmg" rel="noopener">Download macOS DMG</a>
+          <a class="btn btn--ghost" id="downloadWin" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-Windows-x64.exe" rel="noopener">Download Windows Installer</a>
+          <a class="btn btn--ghost" id="downloadSha" href="https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-mac-arm64.dmg.sha256" rel="noopener">Download SHA256</a>
         </div>
 
         <div class="muted small" style="margin-top:12px">
@@ -350,7 +350,7 @@
 shasum -a 256 AIGraderPro_mac_arm64.dmg
 
 # Windows (PowerShell)
-Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
+Get-FileHash .\AIGraderPro-Windows_x64.zip -Algorithm SHA256
 
 # Compare the output with the content of the .sha256 file</pre>
         </details>
@@ -494,7 +494,7 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
     const REPO  = "AIGraderPro-Downloads";
     const DMG_MATCH = /mac-arm64\.dmg$/i;
     const SHA_MATCH = /mac-arm64\.dmg\.sha256$/i;
-    const WIN_MATCH = /^AIGraderPro_Windows\.zip$/i;
+    const WIN_MATCH = /^AIGraderPro-Windows\.exe$/i;
 
     const $ = (id) => document.getElementById(id);
     const setText = (id, txt) => { const el = $(id); if (el) el.textContent = txt; };
@@ -543,11 +543,11 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
 
         const dmg = assets.find(a => DMG_MATCH.test(a.name)) || assets.find(a => a.name && a.name.toLowerCase().endsWith(".dmg"));
         const sha = assets.find(a => SHA_MATCH.test(a.name)) || assets.find(a => a.name && a.name.toLowerCase().endsWith(".sha256"));
-        const win = assets.find(a => WIN_MATCH.test(a.name)) || assets.find(a => a.name && /windows.*\.zip$/i.test(a.name));
+        const win = assets.find(a => WIN_MATCH.test(a.name)) || assets.find(a => a.name && /windows.*\.exe$/i.test(a.name));
 
         const latestDownloadBase = `https://github.com/${OWNER}/${REPO}/releases/latest/download/`;
         const versionDownloadBase = `https://github.com/${OWNER}/${REPO}/releases/download/${encodeURIComponent(tag)}/`;
-        const winLatestUrl = latestDownloadBase + "AIGraderPro_Windows.zip";
+        const winLatestUrl = latestDownloadBase + "AIGraderPro-Windows.exe";
 
         if (dmg) {
           $("downloadMac").href = dmg.browser_download_url;
@@ -558,8 +558,8 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
           setText("dateTag", date ? `Release date：${date}` : "Release date：—");
           setText("latestUrlCode", latestDownloadBase + dmg.name);
           setText("versionUrlCode", versionDownloadBase + dmg.name);
-          setText("latestUrlCodeWin", latestDownloadBase + "AIGraderPro_Windows.zip");
-          setText("versionUrlCodeWin", versionDownloadBase + "AIGraderPro_Windows.zip");
+          setText("latestUrlCodeWin", latestDownloadBase + "AIGraderPro-Windows.zip");
+          setText("versionUrlCodeWin", versionDownloadBase + "AIGraderPro-Windows.exe");
         } else {
           setText("latestBadge", "No DMG found");
           setText("latestTag", "Latest version：—");
@@ -580,9 +580,9 @@ Get-FileHash .\AIGraderPro_Windows_x64.zip -Algorithm SHA256
         setText("dateTag", "Release date：—");
         setText("latestUrlCode", `https://github.com/${OWNER}/${REPO}/releases/latest/download/<DMG filename>`);
         setText("versionUrlCode", `https://github.com/${OWNER}/${REPO}/releases/download/vX.Y.Z/<DMG filename>`);
-        setText("latestUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro_Windows.zip`);
-        setText("versionUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/download/vX.Y.Z/AIGraderPro_Windows.zip`);
-        if ($("downloadWin")) $("downloadWin").href = `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro_Windows.zip`;
+        setText("latestUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro-Windows.exe`);
+        setText("versionUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/download/vX.Y.Z/AIGraderPro-Windows.exe`);
+        if ($("downloadWin")) $("downloadWin").href = `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro-Windows.exe`;
       }
     }
 
