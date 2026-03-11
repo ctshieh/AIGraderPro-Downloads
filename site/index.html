@@ -390,7 +390,7 @@ Get-FileHash .\AIGraderPro-Windows-x64.exe -Algorithm SHA256
               <li>Email 支援</li>
             </ul>
             <div class="row">
-              <a class="btn btn--primary" href="#contact">購買個人授權</a>
+                <a class="btn btn--primary" href="#" onclick="buyPersonal(); return false;">購買個人授權</a>
               <a class="btn btn--ghost" href="#download">下載試用版</a>
             </div>
           </article>
@@ -408,7 +408,7 @@ Get-FileHash .\AIGraderPro-Windows-x64.exe -Algorithm SHA256
               <li>優先支援</li>
             </ul>
             <div class="row">
-              <a class="btn btn--primary" href="#contact">加入候補 / 聯絡銷售</a>
+                <a class="btn btn--primary" href="#" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'}); return false;">加入候補 / 聯絡銷售</a>
               <a class="btn btn--ghost" href="#download">先下載試用版</a>
             </div>
           </article>
@@ -616,8 +616,26 @@ Get-FileHash .\AIGraderPro-Windows-x64.exe -Algorithm SHA256
     }
 
     loadLatest();
-  </script>
-  <script>window.__PRICING_JSON_URL="assets/pricing.json";</script>
-<script src="assets/pricing.js"></script>
-</body>
-</html>
+      <script>window.__PRICING_JSON_URL="assets/pricing.json";</script>
+      <script src="assets/pricing.js"></script>
+
+      <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+      <script>
+        Paddle.Environment.set("live");
+        Paddle.Initialize({
+          token: "在這裡放你的完整 live client-side token"
+        });
+
+        function buyPersonal() {
+          Paddle.Checkout.open({
+            items: [
+              {
+                priceId: "在這裡放你的完整 Personal priceId",
+                quantity: 1
+              }
+            ]
+          });
+        }
+      </script>
+      </body>
+      </html>
