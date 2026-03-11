@@ -390,7 +390,7 @@ Get-FileHash .\AIGraderPro-Windows-x64.exe -Algorithm SHA256
               <li>Email 支援</li>
             </ul>
             <div class="row">
-                <a class="btn btn--primary" href="#" onclick="buyPersonal(); return false;">購買個人授權</a>
+                <button type="button" class="btn btn--primary" onclick="buyPersonal()">購買個人授權</button>
               <a class="btn btn--ghost" href="#download">下載試用版</a>
             </div>
           </article>
@@ -408,7 +408,7 @@ Get-FileHash .\AIGraderPro-Windows-x64.exe -Algorithm SHA256
               <li>優先支援</li>
             </ul>
             <div class="row">
-                <a class="btn btn--primary" href="#" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'}); return false;">加入候補 / 聯絡銷售</a>
+                <button type="button" class="btn btn--primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">加入候補 / 聯絡銷售</button>
               <a class="btn btn--ghost" href="#download">先下載試用版</a>
             </div>
           </article>
@@ -617,18 +617,25 @@ Get-FileHash .\AIGraderPro-Windows-x64.exe -Algorithm SHA256
   <script>
     Paddle.Environment.set("live");
     Paddle.Initialize({
-      token: "live_2f14c8cec2298aef69c7c29fd49"
+      token: "你的新 live client-side token"
     });
 
     function buyPersonal() {
-      Paddle.Checkout.open({
-        items: [
-          {
-            priceId: "pri_01kkd4szhavp8h1h7216947wnd",
-            quantity: 1
-          }
-        ]
-      });
+      try {
+        console.log("buyPersonal triggered");
+
+        Paddle.Checkout.open({
+          items: [
+            {
+              priceId: "pri_01kkd4szhavp8h1h7216947wnd",
+              quantity: 1
+            }
+          ]
+        });
+      } catch (err) {
+        console.error("Paddle checkout error:", err);
+        alert("Paddle checkout 目前無法開啟，請先查看 Console 錯誤訊息。");
+      }
     }
   </script>
   </body>
