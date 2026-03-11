@@ -585,57 +585,51 @@ Get-FileHash .\AIGraderPro-Windows-x64.exe -Algorithm SHA256
           setText("latestDate", date || "—");
           setText("latestTag", `最新版本：${tag}`);
           setText("dateTag", date ? `更新日期：${date}` : "更新日期：—");
-          setText("latestUrlCode", latest下載Base + dmg.name);
-          setText("versionUrlCode", version下載Base + dmg.name);
-          setText("latestUrlCodeWin", latest下載Base + "AIGraderPro-Windows-x64.exe");
-          setText("versionUrlCodeWin", version下載Base + "AIGraderPro-Windows-x64.exe");
         } else {
           setText("latestBadge", "尚未找到 DMG");
           setText("latestTag", "最新版本：—");
           setText("dateTag", "更新日期：—");
-          setText("latestUrlCode", latest下載Base + "<DMG檔名>");
-          setText("versionUrlCode", version下載Base + "<DMG檔名>");
-          setText("latestUrlCodeWin", latest下載Base + "AIGraderPro-Windows-x64.exe");
-          setText("versionUrlCodeWin", version下載Base + "AIGraderPro-Windows-x64.exe");
         }
 
-        if (sha) $("downloadSha").href = sha.browser_download_url;
-        if ($("downloadWin")) $("downloadWin").href = (win && win.browser_download_url) ? win.browser_download_url : winLatestUrl;
-
+        if ($("downloadWin")) {
+          $("downloadWin").href = (win && win.browser_download_url) ? win.browser_download_url : winLatestUrl;
+        }
       } catch (err) {
         console.error(err);
         setText("latestBadge", "無法讀取最新版本");
         setText("latestTag", "最新版本：—");
         setText("dateTag", "更新日期：—");
-        setText("latestUrlCode", `https://github.com/${OWNER}/${REPO}/releases/latest/download/<DMG檔名>`);
-        setText("versionUrlCode", `https://github.com/${OWNER}/${REPO}/releases/download/vX.Y.Z/<DMG檔名>`);
-        setText("latestUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro-Windows-x64.exe`);
-        setText("versionUrlCodeWin", `https://github.com/${OWNER}/${REPO}/releases/download/vX.Y.Z/AIGraderPro-Windows-x64.exe`);
-        if ($("downloadWin")) $("downloadWin").href = `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro-Windows-x64.exe`;
+        if ($("downloadWin")) {
+          $("downloadWin").href = `https://github.com/${OWNER}/${REPO}/releases/latest/download/AIGraderPro-Windows-x64.exe`;
+        }
       }
     }
 
     loadLatest();
-      <script>window.__PRICING_JSON_URL="assets/pricing.json";</script>
-      <script src="assets/pricing.js"></script>
+  </script>
 
-      <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
-      <script>
-        Paddle.Environment.set("live");
-        Paddle.Initialize({
-          token: "在這裡放你的完整 live client-side token"
-        });
+  <script>
+    window.__PRICING_JSON_URL = "assets/pricing.json";
+  </script>
+  <script src="assets/pricing.js"></script>
 
-        function buyPersonal() {
-          Paddle.Checkout.open({
-            items: [
-              {
-                priceId: "在這裡放你的完整 Personal priceId",
-                quantity: 1
-              }
-            ]
-          });
-        }
-      </script>
-      </body>
-      </html>
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <script>
+    Paddle.Environment.set("live");
+    Paddle.Initialize({
+      token: "你的完整 live client-side token"
+    });
+
+    function buyPersonal() {
+      Paddle.Checkout.open({
+        items: [
+          {
+            priceId: "你的完整 Personal priceId",
+            quantity: 1
+          }
+        ]
+      });
+    }
+  </script>
+  </body>
+  </html>
