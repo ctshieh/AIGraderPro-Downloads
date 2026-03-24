@@ -1,5 +1,5 @@
 # AI Grader Pro
-## FutureHorizon Humane Ventures
+## 
 
 ---
 
