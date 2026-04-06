@@ -7,32 +7,75 @@ on:
 jobs:
   dispatch:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Send repository_dispatch to website repo
+      - name: Validate required values
+        shell: bash
         env:
           GH_TOKEN: ${{ secrets.WEBSITE_REPO_PAT }}
           TAG_NAME: ${{ github.event.release.tag_name }}
           PUBLISHED_AT: ${{ github.event.release.published_at }}
-          WEBSITE_REPO: ctshieh/aigraderpro
         run: |
-          curl -L \
+          set -euo pipefail
+
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "ERROR: WEBSITE_REPO_PAT is missing."
+            exit 1
+          fi
+
+          if [ -z "${TAG_NAME:-}" ]; then
+            echo "ERROR: release tag_name is missing."
+            exit 1
+          fi
+
+          if [ -z "${PUBLISHED_AT:-}" ]; then
+            echo "ERROR: release published_at is missing."
+            exit 1
+          fi
+
+          echo "Release tag: ${TAG_NAME}"
+          echo "Published at: ${PUBLISHED_AT}"
+
+      - name: Send repository_dispatch to website repo
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.WEBSITE_REPO_PAT }}
+          WEBSITE_REPO: ctshieh/aigraderpro
+          TAG_NAME: ${{ github.event.release.tag_name }}
+          PUBLISHED_AT: ${{ github.event.release.published_at }}
+        run: |
+          set -euo pipefail
+
+          PAYLOAD=$(cat <<EOF
+          {
+            "event_type": "release_published",
+            "client_payload": {
+              "version": "${TAG_NAME}",
+              "published_at": "${PUBLISHED_AT}",
+              "releases": "https://github.com/ctshieh/AIGraderPro-Downloads/releases",
+              "mac": "https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-mac-arm64.dmg",
+              "win": "https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-Windows-x64.exe"
+            }
+          }
+          EOF
+          )
+
+          echo "Dispatching to ${WEBSITE_REPO} ..."
+          HTTP_CODE=$(curl -sS -o /tmp/dispatch_response.txt -w "%{http_code}" \
+            -L \
             -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/${WEBSITE_REPO}/dispatches \
-            -d "$(jq -n \
-              --arg tag "$TAG_NAME" \
-              --arg published_at "$PUBLISHED_AT" \
-              --arg releases "https://github.com/ctshieh/AIGraderPro-Downloads/releases" \
-              --arg mac "https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-mac-arm64.dmg" \
-              --arg win "https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-Windows-x64.exe" \
-              '{
-                event_type: "release_published",
-                client_payload: {
-                  version: $tag,
-                  published_at: $published_at,
-                  releases: $releases,
-                  mac: $mac,
-                  win: $win
-                }
-              }')"
+            -d "${PAYLOAD}")
+
+          echo "HTTP status: ${HTTP_CODE}"
+          cat /tmp/dispatch_response.txt || true
+
+          if [ "${HTTP_CODE}" != "204" ]; then
+            echo "ERROR: repository_dispatch failed."
+            exit 1
+          fi
+
+          echo "repository_dispatch sent successfully."
