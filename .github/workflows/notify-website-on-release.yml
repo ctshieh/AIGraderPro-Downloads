@@ -4,7 +4,7 @@ on:
   release:
     types: [published]
   workflow_dispatch:
-     inputs:
+    inputs:
       version:
         description: "Version to send when running manually"
         required: false
@@ -13,46 +13,66 @@ on:
         description: "Publish timestamp to send when running manually"
         required: false
         default: "2026-04-07T00:00:00Z"
-  
+
 jobs:
   dispatch:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Validate required values
+      - name: Resolve payload values
+        id: vars
         shell: bash
         env:
-          GH_TOKEN: ${{ secrets.WEBSITE_REPO_PAT }}
-          TAG_NAME: ${{ github.event.release.tag_name }}
-          PUBLISHED_AT: ${{ github.event.release.published_at }}
+          EVENT_NAME: ${{ github.event_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_PUBLISHED_AT: ${{ github.event.release.published_at }}
+          INPUT_VERSION: ${{ inputs.version }}
+          INPUT_PUBLISHED_AT: ${{ inputs.published_at }}
         run: |
           set -euo pipefail
 
-          if [ -z "${GH_TOKEN:-}" ]; then
-            echo "ERROR: WEBSITE_REPO_PAT is missing."
-            exit 1
+          if [ "${EVENT_NAME}" = "release" ]; then
+            VERSION="${RELEASE_TAG}"
+            PUBLISHED_AT="${RELEASE_PUBLISHED_AT}"
+          else
+            VERSION="${INPUT_VERSION}"
+            PUBLISHED_AT="${INPUT_PUBLISHED_AT}"
           fi
 
-          if [ -z "${TAG_NAME:-}" ]; then
-            echo "ERROR: release tag_name is missing."
+          if [ -z "${VERSION:-}" ]; then
+            echo "ERROR: version is missing."
             exit 1
           fi
 
           if [ -z "${PUBLISHED_AT:-}" ]; then
-            echo "ERROR: release published_at is missing."
+            echo "ERROR: published_at is missing."
             exit 1
           fi
 
-          echo "Release tag: ${TAG_NAME}"
-          echo "Published at: ${PUBLISHED_AT}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "published_at=${PUBLISHED_AT}" >> "$GITHUB_OUTPUT"
+
+          echo "Resolved version: ${VERSION}"
+          echo "Resolved published_at: ${PUBLISHED_AT}"
+
+      - name: Validate token
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.WEBSITE_REPO_PAT }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "ERROR: WEBSITE_REPO_PAT is missing."
+            exit 1
+          fi
 
       - name: Send repository_dispatch to website repo
         shell: bash
         env:
           GH_TOKEN: ${{ secrets.WEBSITE_REPO_PAT }}
           WEBSITE_REPO: ctshieh/aigraderpro
-          TAG_NAME: ${{ github.event.release.tag_name }}
-          PUBLISHED_AT: ${{ github.event.release.published_at }}
+          VERSION: ${{ steps.vars.outputs.version }}
+          PUBLISHED_AT: ${{ steps.vars.outputs.published_at }}
         run: |
           set -euo pipefail
 
@@ -60,7 +80,7 @@ jobs:
           {
             "event_type": "release_published",
             "client_payload": {
-              "version": "${TAG_NAME}",
+              "version": "${VERSION}",
               "published_at": "${PUBLISHED_AT}",
               "releases": "https://github.com/ctshieh/AIGraderPro-Downloads/releases",
               "mac": "https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-mac-arm64.dmg",
@@ -70,7 +90,6 @@ jobs:
           EOF
           )
 
-          echo "Dispatching to ${WEBSITE_REPO} ..."
           HTTP_CODE=$(curl -sS -o /tmp/dispatch_response.txt -w "%{http_code}" \
             -L \
             -X POST \
