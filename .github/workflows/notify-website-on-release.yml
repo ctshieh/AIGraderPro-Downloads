@@ -4,6 +4,15 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+     inputs:
+      version:
+        description: "Version to send when running manually"
+        required: false
+        default: "manual-test"
+      published_at:
+        description: "Publish timestamp to send when running manually"
+        required: false
+        default: "2026-04-07T00:00:00Z"
   
 jobs:
   dispatch:
