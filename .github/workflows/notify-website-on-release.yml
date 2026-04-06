@@ -1,0 +1,38 @@
+name: Notify website repo on release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send repository_dispatch to website repo
+        env:
+          GH_TOKEN: ${{ secrets.WEBSITE_REPO_PAT }}
+          TAG_NAME: ${{ github.event.release.tag_name }}
+          PUBLISHED_AT: ${{ github.event.release.published_at }}
+          WEBSITE_REPO: ctshieh/aigraderpro
+        run: |
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            https://api.github.com/repos/${WEBSITE_REPO}/dispatches \
+            -d "$(jq -n \
+              --arg tag "$TAG_NAME" \
+              --arg published_at "$PUBLISHED_AT" \
+              --arg releases "https://github.com/ctshieh/AIGraderPro-Downloads/releases" \
+              --arg mac "https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-mac-arm64.dmg" \
+              --arg win "https://github.com/ctshieh/AIGraderPro-Downloads/releases/latest/download/AIGraderPro-Windows-x64.exe" \
+              '{
+                event_type: "release_published",
+                client_payload: {
+                  version: $tag,
+                  published_at: $published_at,
+                  releases: $releases,
+                  mac: $mac,
+                  win: $win
+                }
+              }')"
